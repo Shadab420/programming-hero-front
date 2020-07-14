@@ -1,13 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import logo from './assets/images/logo/programming-hero-web-logo.png';
 import './css/myBulma.css';
 import './App.css';
+import Register from './components/authentication/register/Register';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Programming Hero Web Course</h1>
-    </div>
+    <Router>
+      <div className="container is-fluid">
+        {/* <img src={logo} alt="logo"/>
+        <p className="has-text-weight-semibold has-text-danger">Programming Hero Web Course</p>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          </ul>
+        </nav> */}
+
+        <Switch>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/">
+           
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

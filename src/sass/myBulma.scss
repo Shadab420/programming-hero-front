@@ -1,9 +1,21 @@
 @charset "utf-8";
 
 //customization codes
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;500;600&display=swap');
 
+//my variables
+//primary font
+$family-poppins: 'Poppins', sans-serif; 
 
+//secondary font
+$family-sans: 'Open Sans', sans-serif;
 
+//background colors
+$body-bg: #F5F8FC;
+
+//modified bulma variables
+$family-primary: $family-poppins;
+$body-background-color: $body-bg;
 
 
 //Import all bulma codes

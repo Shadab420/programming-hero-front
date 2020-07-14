@@ -1,0 +1,54 @@
+.auth-div{
+    background-image: url('../../../assets/images/backgrounds/backgroung.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.title{
+    color: #6644F7;
+}
+
+.input, .box, .button-icon{
+    border-radius: 20px;
+}
+
+.button{
+    background-image: linear-gradient(to right, #FF136F, #FF589B);
+    padding: 25px;
+    border-radius: 25px;
+    width: 100%;
+}
+
+.button:hover{
+    background-image: linear-gradient(to right, #FF589B, #FF136F);
+}
+
+.button-icon{
+    background: white;
+    margin: 5px;
+}
+
+.button-icon svg{
+    color: #FF136F;
+}
+
+.box{
+    width: 70%;
+    margin-left: 10%;
+}
+
+.image{
+    width: 80%;
+    margin-left: 10%;
+}
+
+@media only screen and (max-width: 768px){
+    .box{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+}
