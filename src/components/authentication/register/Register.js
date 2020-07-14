@@ -1,8 +1,8 @@
 import React from 'react';
 import img from '../../../assets/images/header-slider/slider-img1.png';
-import './Register.scss';
-import { FaUser, FaEnvelope, FaPhone, FaUserSecret, FaCheck, FaExclamationTriangle, FaTimes, FaArrowRight } from 'react-icons/fa';
-import { Formik, Form, useFormik, Field } from 'formik';
+import '../authentication.scss';
+import { FaUser, FaEnvelope, FaPhone, FaUserSecret, FaCheck, FaExclamationTriangle, FaLock, FaArrowRight } from 'react-icons/fa';
+import { Formik, Form, Field } from 'formik';
 import RegisterSchema from './RegisterValidationSchema';
 
 const Register = () => {
@@ -107,7 +107,7 @@ const Register = () => {
                                 <Field class="input" type="text" id="password" name="password" placeholder="******"/>
                                 {/* <input class="input is-success" type="text" id="name" placeholder="Your Name"/> */}
                                 <span class="icon is-small is-left">
-                                    <FaUserSecret />
+                                    <FaLock />
                                 </span>
                                 {/* <span class="icon is-small is-right">
                                     <FaCheck />
@@ -124,7 +124,7 @@ const Register = () => {
 
                         <div class="field">
                             <div class="control has-icons-right">
-                                <button type="submit" class="button is-link">Submit</button>
+                                <button type="submit" class="button is-link">Register</button>
                                 <span className="icon is-small is-right button-icon"><FaArrowRight/></span>
                             </div>
                             {/* <div class="control">

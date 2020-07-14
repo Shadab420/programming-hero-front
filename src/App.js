@@ -9,6 +9,7 @@ import {
 import logo from './assets/images/logo/programming-hero-web-logo.png';
 import './css/myBulma.css';
 import './App.css';
+import Login from './components/authentication/login/Login';
 import Register from './components/authentication/register/Register';
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
         </nav> */}
 
         <Switch>
+        <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>

@@ -1,5 +1,5 @@
 .auth-div{
-    background-image: url('../../../assets/images/backgrounds/backgroung.png');
+    background-image: url('../../assets/images/backgrounds/backgroung.png');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -42,6 +42,11 @@
     width: 80%;
     margin-left: 10%;
 }
+
+.remember-me, .forgot-password{
+    text-align: center;
+}
+
 
 @media only screen and (max-width: 768px){
     .box{
