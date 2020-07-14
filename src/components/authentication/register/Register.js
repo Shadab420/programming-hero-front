@@ -4,6 +4,9 @@ import '../authentication.scss';
 import { FaUser, FaEnvelope, FaPhone, FaUserSecret, FaCheck, FaExclamationTriangle, FaLock, FaArrowRight } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
 import RegisterSchema from './RegisterValidationSchema';
+import ImageCarousel from '../../carousel/ImageCarousel';
+import { Link } from 'react-router-dom';
+
 
 const Register = () => {
 
@@ -124,12 +127,14 @@ const Register = () => {
 
                         <div class="field">
                             <div class="control has-icons-right">
-                                <button type="submit" class="button is-link">Register</button>
-                                <span className="icon is-small is-right button-icon"><FaArrowRight/></span>
+                                <button type="submit" class="button button-auth is-link">Register</button>
+                                <span className="icon is-small is-right button-auth-icon"><FaArrowRight/></span>
                             </div>
                             {/* <div class="control">
-                                <button class="button is-link is-light">Cancel</button>
+                                <button class="button-auth is-link is-light">Cancel</button>
                             </div> */}
+
+                            <p className="reg-or-login-text">Already have an account? <Link to="/login" className=" forgot-password">Login</Link></p>
                         </div>
 
                     </Form>
@@ -137,7 +142,9 @@ const Register = () => {
                 </Formik>
                 </div>
                 <div class="column is-half">
-                    <img src={img} className="image"/>
+                    {/* <img src={img} className="image"/> */}
+
+                    <ImageCarousel />
                 </div>
             </div>
             
