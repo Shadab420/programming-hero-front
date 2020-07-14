@@ -6,6 +6,7 @@ import { Formik, Form, Field } from 'formik';
 import RegisterSchema from './RegisterValidationSchema';
 import ImageCarousel from '../../carousel/ImageCarousel';
 import { Link } from 'react-router-dom';
+import ParticleBG from '../../particle-bg/ParticleBG';
 
 
 const Register = () => {
@@ -13,6 +14,9 @@ const Register = () => {
     return (
         <div>
             <div class="columns is-vcentered is-centered auth-div">
+                
+                <ParticleBG />
+                
                 <div class="column is-half">
 
                 <Formik
@@ -129,12 +133,13 @@ const Register = () => {
                             <div class="control has-icons-right">
                                 <button type="submit" class="button button-auth is-link">Register</button>
                                 <span className="icon is-small is-right button-auth-icon"><FaArrowRight/></span>
+                                <p className="reg-or-login-text">Already have an account? <Link to="/login" className=" forgot-password">Login</Link></p>
                             </div>
                             {/* <div class="control">
                                 <button class="button-auth is-link is-light">Cancel</button>
                             </div> */}
 
-                            <p className="reg-or-login-text">Already have an account? <Link to="/login" className=" forgot-password">Login</Link></p>
+                            
                         </div>
 
                     </Form>
