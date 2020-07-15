@@ -1,8 +1,15 @@
-import React, { useContext, createContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom';
+//firebase
+import * as firebase from  "firebase/app";
+import "firebase/auth";
+import firebaseConfig from '../firebase.config';
+import { useState, createContext } from "react";
+
+
+firebase.initializeApp(firebaseConfig);
 
 const AuthContext = createContext();
-
 export const AuthContextProvider = (props) => {
     const auth = Auth();
     return (
@@ -12,18 +19,21 @@ export const AuthContextProvider = (props) => {
     )
 }
 
+//custom hook barbar context import kore use kora theke bachar jonno.
 export const useAuth = () => useContext(AuthContext);
 
 
 export const PrivateRoute = ({ children, ...rest }) => {
   
-    const auth = Auth();
+    const auth = useAuth();
+    const authUser = localStorage.getItem("hot-onion-user");
 
+  if(auth.user) console.log(auth.user.email)
     return (
     <Route
       {...rest}
       render={({ location }) =>
-        auth.user ? (
+        authUser ? (
           children
         ) : (
           <Redirect
@@ -38,15 +48,77 @@ export const PrivateRoute = ({ children, ...rest }) => {
   );
 }
 
+const getUser = user => {
+    const { displayName, email, photoURL } = user;
+    return {
+        name: displayName,
+        email,
+        photo: photoURL
+    }
+}
+
 const Auth = () => {
+    const [user, setUser] = useState(null);
+   
+    const signUpWithPassword = (email, password) => {
+      return firebase.auth().createUserWithEmailAndPassword(email, password)
+              .then(res => {
 
+                const signedInUser = getUser(res.user);
+                setUser(signedInUser);
+                localStorage.setItem("hot-onion-user", true);
+                return res.user;
+            })
+            .catch(err=>{
+                console.log(err);
+                setUser(null)
+                return err.message;
+            })
+    }
 
-    const user = sessionStorage.getItem('phUser');
+    const signInWithPassword = (email, password) => {
+      return firebase.auth().signInWithEmailAndPassword(email, password)
+              .then(res => {
+
+                const signedInUser = getUser(res.user);
+                setUser(signedInUser);
+                localStorage.setItem("hot-onion-user", true);
+                return res.user;
+            })
+            .catch(err=>{
+                console.log(err);
+                setUser(null)
+                return err.message;
+            })
+    }
+
+    const signOut = () => {
+        return firebase.auth().signOut().then(function() {
+            console.log("signed out success")
+            localStorage.removeItem("hot-onion-user");
+            setUser(null);
+          })
+          .catch(function(error) {
+            console.log(error.message)
+        });
+    }
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                const currentUser = getUser(user);
+                setUser(currentUser);
+            } else {
+              // No user is signed in.
+            }
+          });
+    },[])
 
     return {
-
-        user
-
+        user,
+        signUpWithPassword,
+        signInWithPassword,
+        signOut
     }
 }
 

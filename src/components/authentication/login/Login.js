@@ -7,10 +7,12 @@ import LoginSchema from './LoginValidationSchema';
 import { Link, useHistory } from 'react-router-dom';
 import ImageCarousel from '../../carousel/ImageCarousel';
 import ParticleBG from '../../particle-bg/ParticleBG';
+import Auth from '../../../custom-hooks/useAuth';
 
 const Register = () => {
 
     const history = useHistory();
+    const auth = Auth();
 
     return (
         <div>
@@ -33,9 +35,15 @@ const Register = () => {
                         // same shape as initial values
 
                         //console.log(values);
-                        sessionStorage.setItem('phUser', values.emailOrPhone);
-
-                        history.push('/dashboard');
+                        // sessionStorage.setItem('phUser', values.emailOrPhone);
+                        auth.signInWithPassword(values.emailOrPhone, values.password)
+                        .then(res => {
+                            history.push('/dashboard');
+                            // console.log(res.user)
+                        })
+                        .catch(err=>{
+                            console.log(err)
+                        })
                         
 
                     }}

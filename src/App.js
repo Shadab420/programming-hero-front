@@ -41,6 +41,8 @@ function App() {
 
         <MainNav />
 
+      <h1> Welcome! Go to <Link to="/dashboard">Course</Link></h1>
+
 
         <Switch>
           <Route path="/login">
@@ -52,9 +54,9 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
-          <Route path="/">
+          <PrivateRoute path="/">
            
-          </Route>
+          </PrivateRoute>
         </Switch>
         </AuthContextProvider>
       </div>

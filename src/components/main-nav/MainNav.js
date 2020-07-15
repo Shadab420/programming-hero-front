@@ -2,10 +2,21 @@ import React, { useEffect, useState } from 'react';
 import './MainNav.scss';
 import logo from '../../assets/images/logo/programming-hero-web-logo.png';
 import { useAuth } from '../../custom-hooks/useAuth';
+import { useHistory } from 'react-router-dom';
 
 const MainNav = (props) => {
 
+    const [isActive, setIsActive] = useState(false);
+
     const auth = useAuth();
+    const history = useHistory();
+
+    const handleLogOut = () => {
+        auth.signOut()
+            .then(res => {
+                history.push('/login');
+            })
+      }
 
     return (
         <div>
@@ -73,11 +84,26 @@ const MainNav = (props) => {
                                         <small>Progress (45%)</small>
                                     </div>
 
-                                    <div className="profile-image-div">
-                                        <figure class="image is-32x32">
-                                            <img class="is-rounded" src={require('../../assets/images/users/user.jpg')} />
-                                        </figure>
-                                    </div>
+                                   
+
+                                    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                                        <div class={`navbar-item has-dropdown ${isActive? 'is-active' : '' } `}>
+                                            
+                                            <div className="profile-image-div" onClick={()=>{setIsActive(!isActive)}}>
+                                                <figure class="image is-32x32">
+                                                    <img class="is-rounded" src={require('../../assets/images/users/user.jpg')} />
+                                                </figure>
+                                            </div>
+                                            
+
+                                            <div class="navbar-dropdown">
+                                                <a class="navbar-item" onClick={()=>{handleLogOut()}}>
+                                                    Logout
+                                                </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </nav>
                                 </div>
                             </div>
                         )

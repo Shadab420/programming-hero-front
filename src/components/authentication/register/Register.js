@@ -5,11 +5,15 @@ import { FaUser, FaEnvelope, FaPhone, FaUserSecret, FaCheck, FaExclamationTriang
 import { Formik, Form, Field } from 'formik';
 import RegisterSchema from './RegisterValidationSchema';
 import ImageCarousel from '../../carousel/ImageCarousel';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ParticleBG from '../../particle-bg/ParticleBG';
+import Auth from '../../../custom-hooks/useAuth';
 
 
 const Register = () => {
+    
+    const auth = Auth();
+    const history = useHistory();
 
     return (
         <div>
@@ -32,7 +36,15 @@ const Register = () => {
                     onSubmit={(values) => {
                     // same shape as initial values
 
-                    console.log(values);
+                    // console.log(values);
+                        auth.signUpWithPassword(values.email, values.password)
+                        .then(res => {
+                            // console.log(email, password)
+                            history.push('/dashboard')
+                        })
+                        .catch(err=>{
+                            console.log(err)
+                        })
 
                     }}
 
@@ -111,7 +123,7 @@ const Register = () => {
                         <div class="field">
                             <label class="label" for="password">Password</label>
                             <div class="control has-icons-left has-icons-right">
-                                <Field class="input" type="text" id="password" name="password" placeholder="******"/>
+                                <Field class="input" type="password" id="password" name="password" placeholder="******"/>
                                 {/* <input class="input is-success" type="text" id="name" placeholder="Your Name"/> */}
                                 <span class="icon is-small is-left">
                                     <FaLock />

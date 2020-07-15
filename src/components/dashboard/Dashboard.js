@@ -88,7 +88,7 @@ const Dashboard = () => {
                 </div>
                 <div className="column is-half">
                     <div className="content-div">
-                        <h3 className="has-text-weight-semibold">Contents</h3>
+                        <h3 className="has-text-weight-semibold">Course Contents</h3>
 
                         {
                             [1,2,3].map((n,idx) => {
