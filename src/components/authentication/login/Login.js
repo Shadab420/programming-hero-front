@@ -4,12 +4,13 @@ import '../authentication.scss';
 import { FaEnvelope, FaUserSecret, FaCheck, FaExclamationTriangle, FaLock, FaArrowRight } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
 import LoginSchema from './LoginValidationSchema';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ImageCarousel from '../../carousel/ImageCarousel';
- import ParticleBG from '../../particle-bg/ParticleBG';
+import ParticleBG from '../../particle-bg/ParticleBG';
 
 const Register = () => {
 
+    const history = useHistory();
 
     return (
         <div>
@@ -29,9 +30,13 @@ const Register = () => {
                     validationSchema={LoginSchema}
 
                     onSubmit={(values) => {
-                    // same shape as initial values
+                        // same shape as initial values
 
-                    console.log(values);
+                        //console.log(values);
+                        sessionStorage.setItem('phUser', values.emailOrPhone);
+
+                        history.push('/dashboard');
+                        
 
                     }}
 
@@ -68,7 +73,7 @@ const Register = () => {
                         <div class="field">
                             <label class="label" for="password">Password</label>
                             <div class="control has-icons-left has-icons-right">
-                                <Field class="input" type="text" id="password" name="password" placeholder="******"/>
+                                <Field class="input" type="password" id="password" name="password" placeholder="******"/>
                                 {/* <input class="input is-success" type="text" id="name" placeholder="Your Name"/> */}
                                 <span class="icon is-small is-left">
                                     <FaLock />
