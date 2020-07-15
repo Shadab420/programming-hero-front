@@ -40,7 +40,7 @@ const Register = () => {
 
                     {({ errors, touched }) => (
                     
-                    <Form className="box auth-form">
+                    <Form className="box custom-box auth-form">
                         <h1 className="is-size-2-desktop title">Register</h1>
                         <div class="field">
                             <label class="label" for="name">Name</label>
