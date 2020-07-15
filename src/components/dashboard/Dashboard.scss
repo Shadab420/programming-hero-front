@@ -6,3 +6,75 @@
     max-width: 80%;
     margin-left: 10%;
 }
+
+.video-description-div{
+    width: 100%;
+    margin: 2rem 0;
+    margin-left: 8%;
+}
+
+.video-description-div button{
+    height: 30px;
+    width: 120px;
+}
+
+.video-description-div .prev-btn{
+    background-color: #E5E5E5;
+    margin-left: 40px;
+}
+
+.video-description-div .next-btn{
+    background-image: linear-gradient(to right, #FF5297, #FF1671);
+    color: #fff;
+    margin-left: -20px;
+}
+
+.copyright-description p{
+    color: #FF2424;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+.copyright-description p:hover{
+    cursor: pointer;
+}
+
+.copyright-img{
+    border-radius: 10px;
+}
+
+.modal-content{
+    width: 55%; 
+}
+
+
+
+
+@media only screen and (max-width: 768px){
+    .video-description-div .prev-btn{
+        background-color: #E5E5E5;
+        margin-left: 0;
+    }
+
+    .video-description-div .next-btn{
+        background-image: linear-gradient(to right, #FF5297, #FF1671);
+        color: #fff;
+        margin-left: 0;
+    }
+
+    .video-description p{
+        max-width: 80%;
+    }
+
+    .modal-content{
+        width: 70%; 
+    }
+}
+
+@media only screen and (max-width: 500px){
+
+    .modal-content{
+        width: 90%; 
+    }
+
+}
