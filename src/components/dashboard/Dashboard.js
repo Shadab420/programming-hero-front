@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import './Dashboard.scss';
+import VideoPlayer from '../video-player/VideoPlayer';
+
 
 const Dashboard = () => {
     return (
         <div>
-            <h1>Dashboard</h1>
+            <div className="columns is-vcentered is-centered course-div">
+                <div className="column is-two-thirds">
+                    <div>
+                        <VideoPlayer src="http://www.youtube.com/embed/h3YVKTxTOgU"/>
+                    </div>
+                </div>
+                <div className="column is-one-thirds">
+                    content
+                </div>
+            </div>
         </div>
     )
 }
